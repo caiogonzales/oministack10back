@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 const routes = require('./routes')
 const app = express();
 
@@ -7,7 +8,7 @@ mongoose.connect('mongodb://localhost/week10', { useNewUrlParser: true, useUnifi
         .then(()=>{ console.log('connectado ao banco')})
         .catch((err)=>{ console.log("erro ao connectar"+err) })
 
-
+app.use(cors());
 app.use(express.json());
 app.use(routes)
 // métodos HTTP: GET, POST, PUT, DELETE
